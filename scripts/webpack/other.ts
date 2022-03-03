@@ -1,6 +1,7 @@
-import { Configuration } from 'webpack';
-import { paths } from './paths';
 import * as child_process from 'child_process';
+import { Configuration } from 'webpack';
+
+import { paths } from './paths';
 
 export function git(command: string) {
     return child_process

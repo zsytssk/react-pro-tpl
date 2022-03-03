@@ -1,7 +1,8 @@
-import { Configuration, EnvironmentPlugin } from 'webpack';
-import HtmlWebpackPlugin from 'html-webpack-plugin';
 import { CleanWebpackPlugin } from 'clean-webpack-plugin';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+import { Configuration, EnvironmentPlugin } from 'webpack';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
+
 import { git } from './other';
 
 const htmlWebpackPlugin = new HtmlWebpackPlugin({

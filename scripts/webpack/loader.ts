@@ -55,7 +55,7 @@ export const cssLoaderFn = (mode: Configuration['mode']) => {
 export const tsLoaderFn = (mode: Configuration['mode']) => {
     const default_config = {
         test: /(\.ts|\.tsx|\.jsx|\.js)$/,
-        exclude: [/(\bruntime-corejs3\b)/],
+        exclude: /node_modules(\/|\\)(?!(react-hook-form)(\/|\\)).*/,
         use: [
             {
                 loader: 'thread-loader',
