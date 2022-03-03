@@ -1,4 +1,4 @@
-import { TypeLanguageName } from '@app/constants/i18n';
+import { TypeLanguageName } from '@app/constants/i18n1';
 
 let lang: TypeLanguageName = 'en';
 export function setLang(_lang: TypeLanguageName) {

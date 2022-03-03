@@ -1,7 +1,7 @@
 import { Configuration } from 'webpack';
 
 import { devServerConfigFn } from './devserver';
-import { fileLoader, tsLoaderFn, cssLoaderFn, lessLoaderFn } from './loader';
+import { fileLoader, tsLoaderFn, lessLoaderFn } from './loader';
 import { genDevtool, resolve } from './other';
 import { paths } from './paths';
 import { pluginsFn } from './plugin';

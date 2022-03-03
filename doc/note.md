@@ -1,6 +1,10 @@
 -   @todo 如何测试
 -   https://www.learnrxjs.io/learn-rxjs/recipes/progressbar
 
+## 2022-03-03 21:05:08
+
+-   @ques http://localhost:3000/locales/zh-Hant/index.json -> 找不到
+
 ## 2022-03-02 21:04:19
 
 -   @todo es5 版本 -> const

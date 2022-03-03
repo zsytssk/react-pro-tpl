@@ -1,6 +1,6 @@
 import { handleActions, Action } from 'redux-actions';
 
-import { TypeLanguageName } from '@app/constants/i18n';
+import { TypeLanguageName } from '@app/constants/i18n1';
 
 enum ActionTypes {
     SET_LANG = 'SET_LANG',
