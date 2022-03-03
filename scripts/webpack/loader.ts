@@ -55,7 +55,7 @@ export const cssLoaderFn = (mode: Configuration['mode']) => {
 export const tsLoaderFn = (mode: Configuration['mode']) => {
     const default_config = {
         test: /(\.ts|\.tsx|\.jsx|\.js)$/,
-        exclude: [/\bnode_modules\b/],
+        exclude: [/(\bruntime-corejs3\b)/],
         use: [
             {
                 loader: 'thread-loader',
@@ -73,15 +73,6 @@ export const tsLoaderFn = (mode: Configuration['mode']) => {
         default_config.use.splice(1, 0, {
             loader: 'babel-loader',
         });
-    }
-
-    /** 类型检查 */
-    if (process.env.checkError) {
-        default_config.use = [
-            {
-                loader: 'ts-loader',
-            },
-        ];
     }
 
     return default_config;

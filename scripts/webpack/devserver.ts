@@ -8,8 +8,8 @@ export const devServerConfigFn = (mode: Configuration['mode']) => {
         host: '0.0.0.0',
         contentBase: path.join(__dirname, 'bin'),
         disableHostCheck: true,
-        port: 9000,
+        port: 3000,
         open: true,
-        openPage: 'http://localhost:9000',
+        openPage: 'http://localhost:3000',
     };
 };

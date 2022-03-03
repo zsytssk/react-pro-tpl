@@ -1,6 +1,10 @@
 -   @todo 如何测试
 -   https://www.learnrxjs.io/learn-rxjs/recipes/progressbar
 
+## 2022-03-02 21:04:19
+
+-   @todo es5 版本 -> const
+
 ## 2021-02-23 18:07:34
 
 -   @todo https://stackblitz.com/edit/react-global-state1
@@ -58,12 +62,11 @@ autoprefix:> jss-plugin-vendor-prefixer | inline-style-prefixer
 ```ts
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 
-const fontSize = 14; // px
-// Tell Material-UI what's the font-size on the html element.
-// 16px is the default font-size used by browsers.
+const fontSize = 14; / px
+/ Tell Material-UI what's the font-size on the html element.
+/ 16px is the default font-size used by browsers.
 const htmlFontSize = 16;
 const coef = fontSize / 14;
-
 const theme = createMuiTheme({
     typography: {
         pxToRem: (size) => `${(size / htmlFontSize) * coef}rem`,
