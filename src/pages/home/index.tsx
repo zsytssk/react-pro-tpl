@@ -12,11 +12,14 @@ export default function Home() {
     const [visible, setVisible] = useState(false);
     const t = useTranslateTpl();
     const lang = useLang();
+    const dispatch = useDispatch();
+
     return (
         <div>
             <button
                 onClick={() => {
                     setLang(lang === 'en' ? 'zh-Hant' : 'en');
+                    dispatch(actions.setLang(lang === 'en' ? 'zh-Hant' : 'en'));
                 }}
             >
                 le change lang to 11 {lang === 'en' ? 'zh-Hant' : 'en'}

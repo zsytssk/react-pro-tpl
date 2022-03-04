@@ -20,6 +20,7 @@ reducer[ActionTypes.SET_LANG] = (
     state: AppState,
     action: Action<{ matchId: number; count: number }>,
 ) => {
+    console.log(`test:>2`, state, action);
     return { ...state, lang: action.lang };
 };
 

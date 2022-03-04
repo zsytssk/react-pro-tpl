@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { Suspense, useEffect } from 'react';
 import {
     Link,
     Route,
@@ -10,7 +10,7 @@ import {
 import { formatLang, setLang } from '@app/constants/i18n';
 import { routes } from '@app/routes/app.routes';
 
-export default function Root(props: any) {
+export default function Root() {
     const location = useLocation();
     const navigate = useNavigate();
 
@@ -23,13 +23,7 @@ export default function Root(props: any) {
             navigate(`${newPath}${search}${hash}`);
             setLang(lang);
         }
-    }, [history, location]);
+    }, [navigate, location]);
 
-    return (
-        <>
-            root
-            <Link to={`/loading`}>loading</Link>
-            {useRoutes(routes)}
-        </>
-    );
+    return <div>{useRoutes(routes)}</div>;
 }
