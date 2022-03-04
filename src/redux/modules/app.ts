@@ -1,3 +1,4 @@
+import { Dispatch } from 'redux';
 import { handleActions, Action } from 'redux-actions';
 
 import { TypeLanguageName } from '@app/constants/i18n';
@@ -25,9 +26,13 @@ reducer[ActionTypes.SET_LANG] = (
 };
 
 export const actions = {
-    setLang: (lang: string) => {
-        return { type: ActionTypes.SET_LANG, lang };
-    },
+    setLang:
+        (lang: string) =>
+        async (dispatch: Dispatch<any>, getState: () => AppState) => {
+            const state = getState();
+            console.log(`test:>`, state);
+            dispatch({ type: ActionTypes.SET_LANG, lang });
+        },
 };
 
 export default handleActions(reducer, initialState);
