@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 import Modal from '@app/libs/bitUi/Modal';
 import { log } from '@app/utils/logger';
 
-import styles from './test_form.less';
+import styles from './style.module.less';
 
 export function TestForm({
     visible,
@@ -21,6 +21,7 @@ export function TestForm({
 
     return (
         <Modal visible={visible} className={styles.testModal}>
+            <button onClick={onClose}>close</button>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <input type="submit" value="submit" />
             </form>

@@ -6,7 +6,7 @@ import { setLang } from '@app/constants/i18n';
 import { useLang, useTranslateTpl } from '@app/constants/i18nTools';
 import { appState } from '@app/state';
 
-import { TestForm } from './modal/test_form';
+import { TestForm } from './testForm';
 
 export default function Home() {
     // const [state, stateId] = useThrottleEventState(appState, 500);

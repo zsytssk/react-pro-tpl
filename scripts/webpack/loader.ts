@@ -15,7 +15,9 @@ export const lessLoaderFn = (mode: Configuration['mode']) => {
                 loader: 'css-loader',
                 options: {
                     sourceMap: mode === 'development',
-                    modules: true,
+                    modules: {
+                        auto: true,
+                    },
                 },
             },
             {
