@@ -10,6 +10,7 @@ export const devServerConfigFn = (mode: Configuration['mode']) => {
         },
         port: 3000,
         https: false,
+        hot: false,
         open: 'http://localhost:3000',
     };
 };
