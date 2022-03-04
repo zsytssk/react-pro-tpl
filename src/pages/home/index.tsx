@@ -2,31 +2,27 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import { useTranslateTpl } from '@app/constants/i18n';
+import { setLang } from '@app/constants/i18n';
+import { useTranslateTpl, useLang } from '@app/constants/i18nTools';
 import { actions } from '@app/redux/modules/app';
 
-import { useLang, useLangMap } from '../shared/i18n';
 import { TestForm } from './modal/test_form';
 
 export default function Home() {
     const [visible, setVisible] = useState(false);
-    const dispatch = useDispatch();
-    const langMap = useLangMap();
     const t = useTranslateTpl();
     const lang = useLang();
-
     return (
         <div>
             <button
                 onClick={() => {
-                    dispatch(actions.setLang('en'));
+                    setLang(lang === 'en' ? 'zh-Hant' : 'en');
                 }}
             >
-                le change lang to en
+                le change lang to 1 {lang === 'en' ? 'zh-Hant' : 'en'}
             </button>
-            {langMap('test.test') + '111111'}
             <br />
-            <Link to={`/${lang}/loading`}>loading</Link>
+            <Link to={`/loading`}>loading</Link>
             {t('records_bet_point')}
             <div onClick={() => setVisible(true)}>test form</div>
             <TestForm visible={visible} onClose={() => setVisible(false)} />

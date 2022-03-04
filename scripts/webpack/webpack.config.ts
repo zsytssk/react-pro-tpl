@@ -25,6 +25,7 @@ export default function (_, argv: Configuration) {
             },
         },
         mode,
+        watch: true,
         devtool: genDevtool(mode),
         target: mode === 'production' ? ['web', 'es5'] : ['web'],
         module: {

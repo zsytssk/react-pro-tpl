@@ -1,70 +1,51 @@
-import i18next from 'i18next';
-import LanguageDetector from 'i18next-browser-languagedetector';
-import HttpApi from 'i18next-http-backend';
-import { initReactI18next, useTranslation } from 'react-i18next';
+export const LanguageNameMap = {
+    'zh-Hans': '简体中文',
+    'zh-Hant': '繁体中文',
+    en: '英语',
+    ko: '韩语',
+    ja: '日语',
+    vi: '越南语',
+    pt: '葡萄牙语',
+};
 
-import { getUrlParam } from '@app/libs/bitUI/utils';
+export type TypeLanguageName = keyof typeof LanguageNameMap;
+export const LanguageNames = Object.keys(LanguageNameMap) as TypeLanguageName[];
+export const CHANGE_LANG = 'CHANGE_LANG';
 
-export type Languages = 'en' | 'vi' | 'ja' | 'ko' | 'zh-Hant' | 'tr';
-
-export const Langs = ['en', 'vi', 'ja', 'ko', 'zh-Hant', 'tr'];
-
-const i18n = i18next.createInstance();
-
-i18n
-    // load translation using xhr -> see /public/locales
-    .use(HttpApi)
-    // detect user language
-    // learn more: https://github.com/i18next/i18next-browser-languageDetector
-    .use(LanguageDetector)
-    // pass the i18n instance to react-i18next.
-    .use(initReactI18next)
-    // init i18next
-    // for all options read: https://www.i18next.com/overview/configuration-options
-    .init({
-        // fallbackLng: 'en',
-        // lookupQuerystring: 'lang',
-        lng:
-            getUrlParam('language') ||
-            /* (window.paladin && paladin.sys.config.lang) || */ 'zh-Hant',
-        supportedLngs: Langs,
-        ns: [] /* 'common' */,
-        defaultNS: 'common',
-        debug: false,
-        load: 'currentOnly',
-        interpolation: {
-            escapeValue: false, // not needed for react as it escapes by default
-        },
-        initImmediate: false,
-        backend: {
-            loadPath: `/locales/{{lng}}/{{ns}}.json`,
-            queryStringParams: { v: GIT_VERSION },
-            // loadPath: `${__webpack_public_path__}/locales/{{lng}}/{{ns}}.json`,
-        },
-        detection: {
-            htmlTag: document.documentElement,
-            lookupSessionStorage: 'i18nextLng',
-            lookupCookie: 'lang',
-            caches: ['cookie'],
-            cookieMinutes: 60 * 24 * 365,
-            cookieOptions: { path: '/', sameSite: false },
-        },
-    });
-
-window.addEventListener('BTG_LANG_CHANGED', ({ detail }: any) =>
-    i18n.changeLanguage(detail),
-);
-
-if (__isDev__) {
-    (window as any).i18n = i18n;
+export function setLang(lang: TypeLanguageName) {
+    window.dispatchEvent(new CustomEvent(CHANGE_LANG, { detail: lang }));
+    localStorage.setItem('lang', lang);
 }
 
-export function useTranslateTpl() {
-    const { t } = useTranslation(['index'], { i18n });
-    return t;
-}
-export function getTranslateTpl(tpl: string) {
-    return i18n.t(tpl);
+export function getLang() {
+    const lang = localStorage.getItem('lang');
+    return lang || 'en';
 }
 
-export default i18n;
+export function formatLang(_lang = '') {
+    let result: TypeLanguageName;
+    if (
+        _lang === 'zh-Hans' ||
+        _lang === 'zh' ||
+        (_lang.includes('zh') && _lang.includes('cn'))
+    ) {
+        // 简体中文
+        result = 'zh-Hans';
+    } else if (_lang.indexOf('zh') >= 0) {
+        // 繁体中文
+        result = 'zh-Hant';
+    } else if (_lang === 'ko' || _lang === 'ko-kr') {
+        // 韩文
+        result = 'ko';
+    } else if (_lang === 'jp' || _lang === 'ja') {
+        // 日语
+        result = 'ja';
+    } else if (_lang === 'vi' || _lang === 'vi-vn') {
+        // 越南语
+        result = 'vi';
+    } else if (_lang === 'en') {
+        // 如果没有匹配到支持的语言，统一按照英文展示
+        result = 'en';
+    }
+    return result;
+}

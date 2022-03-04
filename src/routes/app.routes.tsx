@@ -2,28 +2,21 @@ import React from 'react';
 import { RouteConfig } from 'react-router-config';
 import { Redirect } from 'react-router-dom';
 
-import { getLang } from '@app/utils/i18nUtils';
+import { getLang } from '@app/constants/i18n';
 
 const { search, hash } = window.location;
 export const routes: RouteConfig[] = [
     {
-        path: '/',
-        exact: true,
-        render: function ComRedirect() {
-            return <Redirect to={`${getLang()}${search}${hash}`} />;
-        },
-    },
-    {
-        path: ['/:lang', '/:lang/'],
+        path: ['/:lang', '/:lang/', '/'],
         component: React.lazy(() => import('@app/pages/root')),
         routes: [
             {
-                path: ['/:lang', '/:lang/'],
+                path: ['/'],
                 exact: true,
                 component: React.lazy(() => import('@app/pages/home')),
             },
             {
-                path: '/:lang/loading',
+                path: '/loading',
                 component: React.lazy(() => import('@app/pages/loading')),
                 exact: true,
             },

@@ -6,10 +6,11 @@ export const devServerConfigFn = (mode: Configuration['mode']) => {
         historyApiFallback: true,
         clientLogLevel: 'silent',
         host: '0.0.0.0',
-        contentBase: path.join(__dirname, 'bin'),
+        contentBase: path.join(__dirname, 'build'),
         disableHostCheck: true,
         port: 3000,
         open: true,
+        hot: true,
         openPage: 'http://localhost:3000',
     };
 };
