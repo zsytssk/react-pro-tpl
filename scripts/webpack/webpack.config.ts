@@ -1,11 +1,9 @@
 import { Configuration } from 'webpack';
 
 import { devServerConfigFn } from './devserver';
-import { entryFn } from './entry';
+import { entryFn, outputFn } from './entryOutput';
 import { fileLoader, tsLoaderFn, lessLoaderFn } from './loader';
-import { genDevtool, resolve } from './other';
-import { outputFn } from './output';
-import { paths } from './paths';
+import { genDevtool, genOptimise, resolve } from './other';
 import { pluginsFn } from './plugin';
 
 export default function (_, argv: Configuration) {
@@ -24,6 +22,7 @@ export default function (_, argv: Configuration) {
                 { ...fileLoader },
             ],
         },
+        optimization: genOptimise(mode),
         resolve,
         devServer: devServerConfigFn(mode),
         plugins: pluginsFn(mode),

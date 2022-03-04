@@ -14,7 +14,7 @@ export function TestForm({
     onClose?: () => void;
 }) {
     const [state, setState] = useState(false);
-    const { handleSubmit, register, errors } = useForm();
+    const { handleSubmit, register } = useForm();
     const onSubmit = (data) => {
         log(data);
     };
@@ -22,25 +22,6 @@ export function TestForm({
     return (
         <Modal visible={visible} className={styles.testModal}>
             <form onSubmit={handleSubmit(onSubmit)}>
-                <input
-                    type="text"
-                    name="email"
-                    ref={register({
-                        required: 'value is required',
-                        validate: (value) => {
-                            if (
-                                value.match(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/)
-                            ) {
-                                return true;
-                            }
-                            return 'pattern is not match';
-                        },
-                    })}
-                />
-                {errors.email && (
-                    <p style={{ color: 'red' }}>{errors.email.message}</p>
-                )}
-                <br />
                 <input type="submit" value="submit" />
             </form>
         </Modal>

@@ -3,13 +3,13 @@ import { Configuration } from 'webpack';
 
 export const devServerConfigFn = (mode: Configuration['mode']) => {
     return {
-        historyApiFallback: true,
+        allowedHosts: 'all',
         host: '0.0.0.0',
-        contentBase: path.join(__dirname, 'build'),
-        disableHostCheck: true,
+        static: {
+            directory: path.join(__dirname, 'build'),
+        },
         port: 3000,
-        open: true,
-        hot: true,
-        openPage: 'http://localhost:3000',
+        https: false,
+        open: 'http://localhost:3000',
     };
 };

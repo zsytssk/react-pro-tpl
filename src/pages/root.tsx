@@ -1,12 +1,18 @@
 import { useEffect } from 'react';
-import { renderRoutes } from 'react-router-config';
-import { Link, Switch, useHistory, useLocation } from 'react-router-dom';
+import {
+    Link,
+    Route,
+    useLocation,
+    useRoutes,
+    useNavigate,
+} from 'react-router-dom';
 
 import { formatLang, setLang } from '@app/constants/i18n';
+import { routes } from '@app/routes/app.routes';
 
 export default function Root(props: any) {
     const location = useLocation();
-    const history = useHistory();
+    const navigate = useNavigate();
 
     useEffect(() => {
         const { pathname, search, hash } = location;
@@ -14,7 +20,7 @@ export default function Root(props: any) {
         const lang = formatLang(pathLang);
         if (lang) {
             const newPath = location.pathname.replace(`/${pathLang}`, '');
-            history.replace(`${newPath}${search}${hash}`);
+            navigate(`${newPath}${search}${hash}`);
             setLang(lang);
         }
     }, [history, location]);
@@ -23,7 +29,7 @@ export default function Root(props: any) {
         <>
             root
             <Link to={`/loading`}>loading</Link>
-            <Switch>{renderRoutes(props.route.routes)}</Switch>
+            {useRoutes(routes)}
         </>
     );
 }

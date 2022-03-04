@@ -1,11 +1,16 @@
 import { CleanWebpackPlugin } from 'clean-webpack-plugin';
 import CopyWebpackPlugin from 'copy-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
-import { Configuration, DefinePlugin, EnvironmentPlugin } from 'webpack';
+import {
+    Configuration,
+    DefinePlugin,
+    HotModuleReplacementPlugin,
+    EnvironmentPlugin,
+} from 'webpack';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 
 import { git } from './other';
-import { paths, resolveApp } from './paths';
+import { paths } from './paths';
 
 export const pluginsFn = (mode: Configuration['mode']) => {
     const isEnvDevelopment = mode === 'development';

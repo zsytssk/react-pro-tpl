@@ -1,4 +1,5 @@
 import * as child_process from 'child_process';
+import TerserPlugin from 'terser-webpack-plugin';
 import { Configuration } from 'webpack';
 
 import { paths } from './paths';
@@ -21,4 +22,24 @@ export function genDevtool(mode: Configuration['mode']) {
         return 'eval-source-map';
     }
     return false;
+}
+export function genOptimise(mode: Configuration['mode']) {
+    return {
+        minimizer: [
+            new TerserPlugin({
+                extractComments: false,
+            }),
+        ],
+        splitChunks: {
+            cacheGroups: {
+                libs: {
+                    test: /[\\/](node_modules)[\\/]/,
+                    chunks: 'initial',
+                    name: 'libs',
+                    priority: 10,
+                    enforce: true,
+                },
+            },
+        },
+    };
 }

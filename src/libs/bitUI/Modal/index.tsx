@@ -41,6 +41,7 @@ export default function Modal({
     });
     const [localVisible, setLocalVisible] = useState(false);
     const wrapRef = useRef<HTMLDivElement>(null);
+    const containerRef = useRef<HTMLDivElement>(null);
 
     const findWrap = document.querySelector('.bc-modal-wrap') as HTMLDivElement;
     if (findWrap) {
@@ -101,8 +102,10 @@ export default function Modal({
                     onAnimationEnd?.('exited');
                     setRootStyle({ display: 'none' });
                 }}
+                nodeRef={containerRef}
             >
                 <div
+                    ref={containerRef}
                     className={classnames('bc-modal-container', bodyClass)}
                     style={{ ...bodyStyle }}
                 >

@@ -3,6 +3,8 @@
 
 ## 2022-03-03 21:05:08
 
+-   i18nnext 这玩意太大了
+
 ### end
 
 -   @ques live reload 没有了

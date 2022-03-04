@@ -3,6 +3,10 @@ import { Configuration } from 'webpack';
 
 import { paths } from './paths';
 
+export const entryFn = (mode: Configuration['mode']) => {
+    return paths.appIndexJs;
+};
+
 export function outputFn(mode: Configuration['mode']) {
     return {
         path: paths.appBuild,

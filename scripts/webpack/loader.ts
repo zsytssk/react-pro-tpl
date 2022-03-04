@@ -55,7 +55,8 @@ export const cssLoaderFn = (mode: Configuration['mode']) => {
 export const tsLoaderFn = (mode: Configuration['mode']) => {
     const default_config = {
         test: /(\.ts|\.tsx|\.jsx|\.js)$/,
-        exclude: /node_modules(\/|\\)(?!(react-hook-form)(\/|\\)).*/,
+        exclude:
+            /node_modules(\/|\\)(?!(react-hook-form|react-router|react-router-dom)(\/|\\)).*/,
         use: [
             {
                 loader: 'thread-loader',

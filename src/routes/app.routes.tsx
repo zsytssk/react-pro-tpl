@@ -1,25 +1,17 @@
 import React from 'react';
-import { RouteConfig } from 'react-router-config';
-import { Redirect } from 'react-router-dom';
 
-import { getLang } from '@app/constants/i18n';
+import Home from '@app/pages/home';
+import Loading from '@app/pages/loading';
+import Root from '@app/pages/root';
 
 const { search, hash } = window.location;
-export const routes: RouteConfig[] = [
+export const routes = [
     {
-        path: ['/:lang', '/:lang/', '/'],
-        component: React.lazy(() => import('@app/pages/root')),
-        routes: [
-            {
-                path: ['/'],
-                exact: true,
-                component: React.lazy(() => import('@app/pages/home')),
-            },
-            {
-                path: '/loading',
-                component: React.lazy(() => import('@app/pages/loading')),
-                exact: true,
-            },
-        ],
+        path: '*',
+        element: <Home />,
+    },
+    {
+        path: '/loading',
+        element: <Loading />,
     },
 ];
