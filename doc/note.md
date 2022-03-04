@@ -3,10 +3,9 @@
 
 ## 2022-03-03 21:05:08
 
--   @ques live reload 没有了
-
 ### end
 
+-   @ques live reload 没有了
 -   @bug `dispatch(actions.setLang('en'));` 导致多次改变
 -   @ques http://localhost:3000/locales/zh-Hant/index.json -> 找不到
 
