@@ -1,8 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import {
-    useThrottleEventSelector,
-    useThrottleEventState,
-} from 'react-event-state/hooks';
+import { useThrottleEventSelector } from 'react-event-state/hooks';
 import { Link } from 'react-router-dom';
 
 import { setLang } from '@app/constants/i18n';
