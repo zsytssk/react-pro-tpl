@@ -1,11 +1,5 @@
-import { Suspense, useEffect } from 'react';
-import {
-    Link,
-    Route,
-    useLocation,
-    useRoutes,
-    useNavigate,
-} from 'react-router-dom';
+import { useEffect } from 'react';
+import { useLocation, useNavigate, useRoutes } from 'react-router-dom';
 
 import { formatLang, setLang } from '@app/constants/i18n';
 import { routes } from '@app/routes/app.routes';

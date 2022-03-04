@@ -5,6 +5,10 @@
 
 -   @ques EventState 的事件冒泡怎么处理
 
+-   @ques useState useSelector 可以移除 class
+
+    -   添加 useThrottleState useThrottleSelector
+
 -   i18nnext 这玩意太大了
 
 ### end

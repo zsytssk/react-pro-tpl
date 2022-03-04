@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from 'react';
+import { useThrottleEventState } from 'react-event-state/hooks';
 import { Link } from 'react-router-dom';
 
 import { setLang } from '@app/constants/i18n';
-import { useTranslateTpl, useLang } from '@app/constants/i18nTools';
+import { useLang, useTranslateTpl } from '@app/constants/i18nTools';
 import { appState } from '@app/state';
 
 import { TestForm } from './modal/test_form';
 
 export default function Home() {
-    const [state, stateId] = appState.useState();
+    const [state, stateId] = useThrottleEventState(appState, 500);
     const [visible, setVisible] = useState(false);
     const t = useTranslateTpl();
     const lang = useLang();
