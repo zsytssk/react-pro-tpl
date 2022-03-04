@@ -22,7 +22,6 @@ export const pluginsFn = (mode: Configuration['mode']) => {
             __isProd__: JSON.stringify(isEnvProduction),
         }),
         new HtmlWebpackPlugin({
-            hash: true,
             favicon: './public/favicon.ico',
             template: './public/index.html',
         }),

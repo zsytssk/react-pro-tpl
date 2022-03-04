@@ -19,7 +19,7 @@ export default function Home() {
                     setLang(lang === 'en' ? 'zh-Hant' : 'en');
                 }}
             >
-                le change lang to 1 {lang === 'en' ? 'zh-Hant' : 'en'}
+                le change lang to 11 {lang === 'en' ? 'zh-Hant' : 'en'}
             </button>
             <br />
             <Link to={`/loading`}>loading</Link>
