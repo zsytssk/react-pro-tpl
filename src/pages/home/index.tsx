@@ -1,25 +1,28 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import { setLang } from '@app/constants/i18n';
 import { useTranslateTpl, useLang } from '@app/constants/i18nTools';
-import { actions } from '@app/redux/modules/app';
+import { appState } from '@app/state';
 
 import { TestForm } from './modal/test_form';
 
 export default function Home() {
+    const [state, stateId] = appState.useState();
     const [visible, setVisible] = useState(false);
     const t = useTranslateTpl();
     const lang = useLang();
-    const dispatch = useDispatch();
+
+    useEffect(() => {
+        console.log(`test:>`, state, stateId);
+    }, [state, stateId]);
 
     return (
         <div>
             <button
                 onClick={() => {
                     setLang(lang === 'en' ? 'zh-Hant' : 'en');
-                    dispatch(actions.setLang(lang === 'en' ? 'zh-Hant' : 'en'));
+                    state.updateLang(lang === 'en' ? 'zh-Hant' : 'en');
                 }}
             >
                 le change lang to 11 {lang === 'en' ? 'zh-Hant' : 'en'}
